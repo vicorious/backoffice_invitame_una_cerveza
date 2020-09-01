@@ -1,0 +1,105 @@
+{ 
+    "title": "Beer's",
+    "entity": "beer",
+    "api": {
+      "url": "http://localhost:5000"
+    },
+    "filter": [
+      "name"
+    ],
+    "fields": [
+      {
+        "name": "id",
+        "label": "Id",
+        "isId": true,
+        "readonly": true,
+        "type": "number"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "label": "Name"
+      },
+	  {
+        "name": "cup330_price",
+        "type": "number",
+        "label": "Cup price"
+      },
+	  {
+        "name": "pint_price",
+        "type": "number",
+        "label": "Pint price"
+      },
+	  {
+        "name": "giraffe_price",
+        "type": "number",
+        "label": "Giraffe price"
+      },
+	  {
+        "name": "pitcher_price",
+        "type": "number",
+        "label": "Pitcher price"
+      },
+	  {
+        "name": "bar_id",
+        "type": "number",
+        "label": "Bar"
+      },
+	  {
+        "name": "beer_type_id",
+        "type": "number",
+        "label": "Beer Type"
+      },
+	  {
+        "name": "avb",
+        "type": "string",
+        "label": "Alcohol level (avb)"
+      },
+	  {
+        "name": "ibu",
+        "type": "string",
+        "label": "Bitterness (ibu)"
+      },
+	  {
+        "name": "srm",
+        "type": "string",
+        "label": "Color (srm)"
+      },
+	  {
+        "name": "description",
+        "type": "string",
+        "label": "Description"
+      },
+	  {
+        "name": "image",
+        "type": "string",
+        "label": "Image"
+      },
+	  {
+        "name": "pint",
+        "type": "string",
+        "label": "Available Pint"
+      },
+	  {
+        "name": "cup330",
+        "type": "string",
+        "label": "Available Cup330"
+      },
+	  {
+        "name": "giraffe",
+        "type": "string",
+        "label": "Available Giraffe"
+      },
+	  {
+        "name": "pitcher",
+        "type": "string",
+        "label": "Available Pitcher"
+      },
+      {
+        "name": "stars",
+        "type": "string",
+        "control": "number",
+        "label": "Stars"
+      } 
+    ]
+}

@@ -1,0 +1,107 @@
+<ol class="breadcrumb float-right">
+  <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+  <li class="breadcrumb-item active">Beer's</li>
+</ol>
+<div class="card">
+  <div class="header">
+    <h2 class="title">Beer's Detail</h2>
+  </div>
+  <div class="content">
+    <div *ngIf="feedback" class="alert alert-{{feedback.type}}">{{ feedback.message }}</div>
+    <form *ngIf="beer" #editForm="ngForm" (ngSubmit)="save()">
+    
+      <div class="form-group">
+        <label>Id</label>
+        {{beer.id || 'n/a'}} 
+      </div>
+    
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input [(ngModel)]="beer.name" id="name" name="name" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="cup330_price">Cup price</label>
+        <input type="number" [(ngModel)]="beer.cup330_price" id="cup330_price" name="cup330_price" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="pint_price">Pint price</label>
+        <input type="number" [(ngModel)]="beer.pint_price" id="pint_price" name="pint_price" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="giraffe_price">Giraffe price</label>
+        <input type="number" [(ngModel)]="beer.giraffe_price" id="giraffe_price" name="giraffe_price" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="pitcher_price">Pitcher price</label>
+        <input type="number" [(ngModel)]="beer.pitcher_price" id="pitcher_price" name="pitcher_price" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="bar_id">Bar</label>
+        <input type="number" [(ngModel)]="beer.bar_id" id="bar_id" name="bar_id" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="beer_type_id">Beer Type</label>
+        <input type="number" [(ngModel)]="beer.beer_type_id" id="beer_type_id" name="beer_type_id" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="avb">Alcohol level (avb)</label>
+        <input [(ngModel)]="beer.avb" id="avb" name="avb" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="ibu">Bitterness (ibu)</label>
+        <input [(ngModel)]="beer.ibu" id="ibu" name="ibu" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="srm">Color (srm)</label>
+        <input [(ngModel)]="beer.srm" id="srm" name="srm" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input [(ngModel)]="beer.description" id="description" name="description" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input [(ngModel)]="beer.image" id="image" name="image" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="pint">Available Pint</label>
+        <input [(ngModel)]="beer.pint" id="pint" name="pint" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="cup330">Available Cup330</label>
+        <input [(ngModel)]="beer.cup330" id="cup330" name="cup330" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="giraffe">Available Giraffe</label>
+        <input [(ngModel)]="beer.giraffe" id="giraffe" name="giraffe" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="pitcher">Available Pitcher</label>
+        <input [(ngModel)]="beer.pitcher" id="pitcher" name="pitcher" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="stars">Stars</label>
+        <input [(ngModel)]="beer.stars" id="stars" name="stars" class="form-control">
+      </div>
+    
+      <button type="submit" class="btn btn-primary" [disabled]="!editForm.form.valid">Save</button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+</div>

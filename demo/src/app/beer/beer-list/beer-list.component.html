@@ -1,0 +1,78 @@
+<ol class="breadcrumb float-right">
+  <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+  <li class="breadcrumb-item active">Beer's</li>
+</ol>
+<div class="card">
+  <div class="header">
+    <h2 class="title">Beer's List</h2>
+  </div>
+  <div class="content">
+    <form #f="ngForm">
+      
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input [(ngModel)]="filter.name" id="name" name="name" class="form-control">
+      </div>
+      
+      <button (click)="search()" [disabled]="!f?.valid" class="btn btn-primary">Search</button>
+      <a [routerLink]="['../beers', 'new' ]" class="btn btn-default">New</a>
+    </form>
+  </div>
+</div>
+<div class="card" *ngIf="beerList.length > 0">
+  <div *ngIf="feedback" class="alert alert-{{feedback.type}}">{{ feedback.message }}</div>
+  <div class="table-responsive">
+    <table class="table table-centered table-hover mb-0" id="datatable">
+      <thead>
+        <tr>
+          <th class="border-top-0" scope="col">Id</th>
+          <th class="border-top-0" scope="col">Name</th>
+          <th class="border-top-0" scope="col">Cup price</th>
+          <th class="border-top-0" scope="col">Pint price</th>
+          <th class="border-top-0" scope="col">Giraffe price</th>
+          <th class="border-top-0" scope="col">Pitcher price</th>
+          <th class="border-top-0" scope="col">Bar</th>
+          <th class="border-top-0" scope="col">Beer Type</th>
+          <th class="border-top-0" scope="col">Alcohol level (avb)</th>
+          <th class="border-top-0" scope="col">Bitterness (ibu)</th>
+          <th class="border-top-0" scope="col">Color (srm)</th>
+          <th class="border-top-0" scope="col">Description</th>
+          <th class="border-top-0" scope="col">Image</th>
+          <th class="border-top-0" scope="col">Available Pint</th>
+          <th class="border-top-0" scope="col">Available Cup330</th>
+          <th class="border-top-0" scope="col">Available Giraffe</th>
+          <th class="border-top-0" scope="col">Available Pitcher</th>
+          <th class="border-top-0" scope="col">Stars</th>
+          <th class="border-top-0" scope="col" style="width:120px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of beerList" [class.active]="item === selectedBeer">
+        
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.cup330_price}}</td>
+          <td>{{item.pint_price}}</td>
+          <td>{{item.giraffe_price}}</td>
+          <td>{{item.pitcher_price}}</td>
+          <td>{{item.bar_id}}</td>
+          <td>{{item.beer_type_id}}</td>
+          <td>{{item.avb}}</td>
+          <td>{{item.ibu}}</td>
+          <td>{{item.srm}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.image}}</td>
+          <td>{{item.pint}}</td>
+          <td>{{item.cup330}}</td>
+          <td>{{item.giraffe}}</td>
+          <td>{{item.pitcher}}</td>
+          <td>{{item.stars}}</td>
+          <td style="white-space: nowrap">
+            <a [routerLink]="['../beers', item.id ]" class="btn btn-secondary">Edit</a>&nbsp;
+            <button (click)="delete(item)" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
