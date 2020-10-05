@@ -1,0 +1,70 @@
+<ol class="breadcrumb float-right">
+  <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+  <li class="breadcrumb-item active">Bar's</li>
+</ol>
+<div class="card">
+  <div class="header">
+    <h2 class="title">Bar's List</h2>
+  </div>
+  <div class="content">
+    <form #f="ngForm">
+      
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input [(ngModel)]="filter.name" id="name" name="name" class="form-control">
+      </div>
+      
+      <button (click)="search()" [disabled]="!f?.valid" class="btn btn-primary">Search</button>
+      <a [routerLink]="['../bars', 'new' ]" class="btn btn-default">New</a>
+    </form>
+  </div>
+</div>
+<div class="card" *ngIf="barList.length > 0">
+  <div *ngIf="feedback" class="alert alert-{{feedback.type}}">{{ feedback.message }}</div>
+  <div class="table-responsive">
+    <table class="table table-centered table-hover mb-0" id="datatable">
+      <thead>
+        <tr>
+          <th class="border-top-0" scope="col">Id</th>
+          <th class="border-top-0" scope="col">Name</th>
+          <th class="border-top-0" scope="col">Open date</th>
+          <th class="border-top-0" scope="col">Open hour</th>
+          <th class="border-top-0" scope="col">Close hour</th>
+          <th class="border-top-0" scope="col">Open days</th>
+          <th class="border-top-0" scope="col">Payment product</th>
+          <th class="border-top-0" scope="col">Description</th>
+          <th class="border-top-0" scope="col">Image</th>
+          <th class="border-top-0" scope="col">Address</th>
+          <th class="border-top-0" scope="col">Facebook URL</th>
+          <th class="border-top-0" scope="col">Twitter URL</th>
+          <th class="border-top-0" scope="col">Instagram URL</th>
+          <th class="border-top-0" scope="col">Emergency number</th>
+          <th class="border-top-0" scope="col" style="width:120px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of barList" [class.active]="item === selectedBar">
+        
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.open_date}}</td>
+          <td>{{item.opening_hour}}</td>
+          <td>{{item.close_hour}}</td>
+          <td>{{item.open_days}}</td>
+          <td>{{item.payment_product}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.image}}</td>
+          <td>{{item.address}}</td>
+          <td>{{item.facebook}}</td>
+          <td>{{item.twitter}}</td>
+          <td>{{item.instagram}}</td>
+          <td>{{item.emergency_number}}</td>
+          <td style="white-space: nowrap">
+            <a [routerLink]="['../bars', item.id ]" class="btn btn-secondary">Edit</a>&nbsp;
+            <button (click)="delete(item)" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

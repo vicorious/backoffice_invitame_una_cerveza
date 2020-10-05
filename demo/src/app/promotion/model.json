@@ -1,0 +1,29 @@
+{ 
+    "title": "Promotion's",
+    "entity": "promotion",
+    "api": {
+      "url": "http://localhost:5000"
+    },
+    "filter": [
+      "name"
+    ],
+    "fields": [
+      {
+        "name": "id",
+        "label": "Id",
+        "isId": true,
+        "readonly": true,
+        "type": "number"
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "label": "Duration"
+      },
+	  {
+        "name": "beer_id",
+        "type": "number",
+        "label": "Beer"
+      }
+    ]
+}

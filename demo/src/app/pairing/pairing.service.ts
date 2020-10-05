@@ -1,5 +1,5 @@
-import { Beer } from './beer';
-import { BeerFilter } from './beer-filter';
+import { Pairing } from './pairing';
+import { PairingFilter } from './pairing-filter';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -7,21 +7,22 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 const headers = new HttpHeaders().set('Accept', 'application/json');
 
 @Injectable()
-export class BeerService {
-  beerList: Beer[] = [];
-  api = 'http://localhost:5000/beers';
+export class PairingService {
+  pairingList: Pairing[] = [];
+  api = 'http://localhost:5000';
 
   constructor(private http: HttpClient) {
   }
 
-  findById(id: string): Observable<Beer> {
-    const url = `${this.api}/${id}/GET`;
-    return this.http.get<Beer>(url, {headers});
+  findById(id: string): Observable<Pairing> {
+    const url = `${this.api}/${id}`;
+    const params = { id: id };
+    return this.http.get<Pairing>(url, {params, headers});
   }
 
-  load(filter: BeerFilter): void {
+  load(filter: PairingFilter): void {
     this.find(filter).subscribe(result => {
-        this.beerList = result;
+        this.pairingList = result;
       },
       err => {
         console.error('error loading', err);
@@ -29,34 +30,34 @@ export class BeerService {
     );
   }
 
-  find(filter: BeerFilter): Observable<Beer[]> {
+  find(filter: PairingFilter): Observable<Pairing[]> {
     const params = {
-      'name': filter.name,
+      'id': filter.id,
     };
 
-    return this.http.get<Beer[]>(this.api, {params, headers});
+    return this.http.get<Pairing[]>(this.api, {params, headers});
   }
 
-  save(entity: Beer): Observable<Beer> {
+  save(entity: Pairing): Observable<Pairing> {
     let params = new HttpParams();
     let url = '';
     if (entity.id) {
       url = `${this.api}/${entity.id.toString()}`;
       params = new HttpParams().set('ID', entity.id.toString());
-      return this.http.put<Beer>(url, entity, {headers, params});
+      return this.http.put<Pairing>(url, entity, {headers, params});
     } else {
       url = `${this.api}`;
-      return this.http.post<Beer>(url, entity, {headers, params});
+      return this.http.post<Pairing>(url, entity, {headers, params});
     }
   }
 
-  delete(entity: Beer): Observable<Beer> {
+  delete(entity: Pairing): Observable<Pairing> {
     let params = new HttpParams();
     let url = '';
     if (entity.id) {
       url = `${this.api}/${entity.id.toString()}`;
       params = new HttpParams().set('ID', entity.id.toString());
-      return this.http.delete<Beer>(url, {headers, params});
+      return this.http.delete<Pairing>(url, {headers, params});
     }
     return null;
   }

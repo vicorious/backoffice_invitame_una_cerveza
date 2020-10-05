@@ -1,5 +1,5 @@
-import { Beer } from './beer';
-import { BeerFilter } from './beer-filter';
+import { Promotion } from './promotion';
+import { PromotionFilter } from './promotion-filter';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -7,21 +7,22 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 const headers = new HttpHeaders().set('Accept', 'application/json');
 
 @Injectable()
-export class BeerService {
-  beerList: Beer[] = [];
-  api = 'http://localhost:5000/beers';
+export class PromotionService {
+  promotionList: Promotion[] = [];
+  api = 'http://localhost:5000';
 
   constructor(private http: HttpClient) {
   }
 
-  findById(id: string): Observable<Beer> {
-    const url = `${this.api}/${id}/GET`;
-    return this.http.get<Beer>(url, {headers});
+  findById(id: string): Observable<Promotion> {
+    const url = `${this.api}/${id}`;
+    const params = { id: id };
+    return this.http.get<Promotion>(url, {params, headers});
   }
 
-  load(filter: BeerFilter): void {
+  load(filter: PromotionFilter): void {
     this.find(filter).subscribe(result => {
-        this.beerList = result;
+        this.promotionList = result;
       },
       err => {
         console.error('error loading', err);
@@ -29,34 +30,33 @@ export class BeerService {
     );
   }
 
-  find(filter: BeerFilter): Observable<Beer[]> {
+  find(filter: PromotionFilter): Observable<Promotion[]> {
     const params = {
-      'name': filter.name,
     };
 
-    return this.http.get<Beer[]>(this.api, {params, headers});
+    return this.http.get<Promotion[]>(this.api, {params, headers});
   }
 
-  save(entity: Beer): Observable<Beer> {
+  save(entity: Promotion): Observable<Promotion> {
     let params = new HttpParams();
     let url = '';
     if (entity.id) {
       url = `${this.api}/${entity.id.toString()}`;
       params = new HttpParams().set('ID', entity.id.toString());
-      return this.http.put<Beer>(url, entity, {headers, params});
+      return this.http.put<Promotion>(url, entity, {headers, params});
     } else {
       url = `${this.api}`;
-      return this.http.post<Beer>(url, entity, {headers, params});
+      return this.http.post<Promotion>(url, entity, {headers, params});
     }
   }
 
-  delete(entity: Beer): Observable<Beer> {
+  delete(entity: Promotion): Observable<Promotion> {
     let params = new HttpParams();
     let url = '';
     if (entity.id) {
       url = `${this.api}/${entity.id.toString()}`;
       params = new HttpParams().set('ID', entity.id.toString());
-      return this.http.delete<Beer>(url, {headers, params});
+      return this.http.delete<Promotion>(url, {headers, params});
     }
     return null;
   }

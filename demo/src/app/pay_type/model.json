@@ -1,0 +1,24 @@
+{ 
+    "title": "Pay type's",
+    "entity": "pay_type",
+    "api": {
+      "url": "http://localhost:5000"
+    },
+    "filter": [
+      "name"
+    ],
+    "fields": [
+      {
+        "name": "id",
+        "label": "Id",
+        "isId": true,
+        "readonly": true,
+        "type": "number"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "label": "Name"
+      }
+    ]
+}

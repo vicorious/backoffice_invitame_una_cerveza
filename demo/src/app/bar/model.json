@@ -1,0 +1,84 @@
+{ 
+    "title": "Bar's",
+    "entity": "bar",
+    "api": {
+      "url": "http://localhost:5000/bars"
+    },
+    "filter": [
+      "name"
+    ],
+    "fields": [
+      {
+        "name": "id",
+        "label": "Id",
+        "isId": true,
+        "readonly": true,
+        "type": "number"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "label": "Name"
+      },
+	  {
+        "name": "open_date",
+        "type": "string",
+        "label": "Open date"
+      },
+	  {
+        "name": "opening_hour",
+        "type": "string",
+        "label": "Open hour"
+      },
+	  {
+        "name": "close_hour",
+        "type": "string",
+        "label": "Close hour"
+      },
+	  {
+        "name": "open_days",
+        "type": "string",
+        "label": "Open days"
+      },
+	  {
+        "name": "payment_product",
+        "type": "string",
+        "label": "Payment product"
+      },
+	  {
+        "name": "description",
+        "type": "string",
+        "label": "Description"
+      },
+	  {
+        "name": "image",
+        "type": "string",
+        "label": "Image"
+      },
+	  {
+        "name": "address",
+        "type": "string",
+        "label": "Address"
+      },
+	  {
+        "name": "facebook",
+        "type": "string",
+        "label": "Facebook URL"
+      },
+	  {
+        "name": "twitter",
+        "type": "string",
+        "label": "Twitter URL"
+      },
+	  {
+        "name": "instagram",
+        "type": "string",
+        "label": "Instagram URL"
+      },
+	  {
+        "name": "emergency_number",
+        "type": "string",
+        "label": "Emergency number"
+      }
+    ]
+}
