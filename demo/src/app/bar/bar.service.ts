@@ -43,7 +43,7 @@ export class BarService {
       url = `${this.api}/${entity.id.toString()}/UPDATE`;
       return this.http.put<Bar>(url, entity, {headers});
     } else {
-      url = `${this.api}`;
+      url = `${this.api}/INSERT`;
       return this.http.post<Bar>(url, entity, {headers});
     }
   }

@@ -4001,7 +4001,7 @@ Copyright (c) 2015 Daniel Eden
   }
 
   .table-responsive {
-    overflow: visible;
+    #overflow: visible;
   }
 }
 
