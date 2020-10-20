@@ -31,7 +31,6 @@ pipeline
             slackSend channel: '${SLACK_CHANNEL}',
                   color: 'good',
                   message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
-            deleteDir() /* clean up our workspace */
         }
         success 
 		{
