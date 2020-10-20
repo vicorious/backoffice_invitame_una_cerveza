@@ -28,7 +28,7 @@ pipeline
 	{
         always 
 		{
-            slackSend(channel: "#continuousdelivery", message: "https://www.nytimes.com", sendAsText: true)
+            slackSend(channel: "#continuousdelivery", message: "The pipeline ends!", sendAsText: true)
         }
         success 
 		{
