@@ -32,25 +32,25 @@ pipeline
         }
         success 
 		{
-            slackSend channel: '${SLACK_CHANNEL}',
+            slackSend channel: ${SLACK_CHANNEL},
                   color: 'good',
                   message: "The pipeline completed successfully."
         }
         unstable 
 		{
-            slackSend channel: '${SLACK_CHANNEL}',
+            slackSend channel: ${SLACK_CHANNEL},
                   color: 'warning',
                   message: "The pipeline completed unstable."
         }
         failure 
 		{
-            slackSend channel: '${SLACK_CHANNEL}',
+            slackSend channel: ${SLACK_CHANNEL},
                   color: 'danger',
                   message: "The pipeline completed failure."
         }
         changed 
 		{
-            slackSend channel: '${SLACK_CHANNEL}',
+            slackSend channel: ${SLACK_CHANNEL},
                   color: 'good',
                   message: "The pipeline completed successfully."
         }
