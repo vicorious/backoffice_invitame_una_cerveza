@@ -28,9 +28,7 @@ pipeline
 	{
         always 
 		{
-            slackSend channel: '${SLACK_CHANNEL}',
-                  color: 'good',
-                  message: "The pipeline completed successfully."
+            slackSend(channel: "#continuousdelivery", message: "https://www.nytimes.com", sendAsText: true)
         }
         success 
 		{
@@ -41,13 +39,13 @@ pipeline
         unstable 
 		{
             slackSend channel: '${SLACK_CHANNEL}',
-                  color: 'bad',
+                  color: 'warning',
                   message: "The pipeline completed unstable."
         }
         failure 
 		{
             slackSend channel: '${SLACK_CHANNEL}',
-                  color: 'bad',
+                  color: 'danger',
                   message: "The pipeline completed failure."
         }
         changed 
